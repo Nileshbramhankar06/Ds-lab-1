@@ -1,83 +1,72 @@
+//linear search
 #include <iostream>
 using namespace std;
 
 int main() {
     int n, key;
-    int found = 0, index = -1;
+    int a[100];
 
     cout << "Enter number of elements: ";
     cin >> n;
 
-    int arr[n];
-
-    cout << "Enter array elements:\n";
+    cout << "Enter elements:\n";
     for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+        cin >> a[i];
     }
 
-    cout << "Enter element to search: ";
+    cout << "Enter key to search: ";
     cin >> key;
 
     for (int i = 0; i < n; i++) {
-        if (arr[i] == key) {
-            found = 1;
-            index = i;   // stores last occurrence
+        if (a[i] == key) {
+            cout << "Element found at index: " << i;
+            return 0;
         }
     }
 
-    if (found == 1) {
-        cout << "Element found at index " << index << endl;
-    } else {
-        cout << "Element not found" << endl;
-    }
-
+    cout << "Element not found";
     return 0;
 }
 
 
-
-
+//binary Search
 #include <iostream>
 using namespace std;
 
 int main() {
     int n, key;
+    int a[100];
+    int low, high, mid;
 
     cout << "Enter number of elements: ";
     cin >> n;
 
-    int arr[n];
-
     cout << "Enter elements in sorted order:\n";
     for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+        cin >> a[i];
     }
 
-    cout << "Enter element to search: ";
+    cout << "Enter key to search: ";
     cin >> key;
 
-    int low = 0, high = n - 1, mid;
-    bool found = false;
+    low = 0;
+    high = n - 1;
 
     while (low <= high) {
         mid = (low + high) / 2;
 
-        if (arr[mid] == key) {
-            cout << "Element found at index " << mid << endl;
-            found = true;
-            break;
-        }
-        else if (arr[mid] < key) {
+        if (a[mid] == key) {
+            cout << "Element found at index: " << mid;
+            return 0;
+        } 
+        else if (a[mid] < key) {
             low = mid + 1;
-        }
+        } 
         else {
             high = mid - 1;
         }
     }
 
-    if (!found) {
-        cout << "Element not found" << endl;
-    }
-
+    cout << "Element not found";
     return 0;
 }
